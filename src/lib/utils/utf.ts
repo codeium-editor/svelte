@@ -6,15 +6,15 @@
  */
 function numUtf8BytesForCodePoint(codePointValue: number): number {
   if (codePointValue < 0x80) {
-    return 1;
+    return 1
   }
   if (codePointValue < 0x800) {
-    return 2;
+    return 2
   }
   if (codePointValue < 0x10000) {
-    return 3;
+    return 3
   }
-  return 4;
+  return 4
 }
 
 /**
@@ -30,18 +30,18 @@ export function numCodeUnitsToNumUtf8Bytes(
   numCodeUnits?: number
 ): number {
   if (numCodeUnits === 0) {
-    return 0;
+    return 0
   }
-  let curNumUtf8Bytes = 0;
-  let curNumCodeUnits = 0;
+  let curNumUtf8Bytes = 0
+  let curNumCodeUnits = 0
   for (const codePoint of text) {
-    curNumCodeUnits += codePoint.length;
-    curNumUtf8Bytes += numUtf8BytesForCodePoint(codePoint.codePointAt(0)!);
+    curNumCodeUnits += codePoint.length
+    curNumUtf8Bytes += numUtf8BytesForCodePoint(codePoint.codePointAt(0)!)
     if (numCodeUnits !== undefined && curNumCodeUnits >= numCodeUnits) {
-      break;
+      break
     }
   }
-  return curNumUtf8Bytes;
+  return curNumUtf8Bytes
 }
 
 export function numUtf8BytesToNumCodeUnits(
@@ -49,16 +49,16 @@ export function numUtf8BytesToNumCodeUnits(
   numUtf8Bytes?: number
 ): number {
   if (numUtf8Bytes === 0) {
-    return 0;
+    return 0
   }
-  let curNumCodeUnits = 0;
-  let curNumUtf8Bytes = 0;
+  let curNumCodeUnits = 0
+  let curNumUtf8Bytes = 0
   for (const codePoint of text) {
-    curNumUtf8Bytes += numUtf8BytesForCodePoint(codePoint.codePointAt(0)!);
-    curNumCodeUnits += codePoint.length;
+    curNumUtf8Bytes += numUtf8BytesForCodePoint(codePoint.codePointAt(0)!)
+    curNumCodeUnits += codePoint.length
     if (numUtf8Bytes !== undefined && curNumUtf8Bytes >= numUtf8Bytes) {
-      break;
+      break
     }
   }
-  return curNumCodeUnits;
+  return curNumCodeUnits
 }

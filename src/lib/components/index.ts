@@ -1,1 +1,1 @@
-export {default as CodeiumEditor } from './CodeiumEditor/CodeiumEditor.svelte';
+export { default as CodeiumEditor } from './CodeiumEditor/CodeiumEditor.svelte'

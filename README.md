@@ -1,4 +1,4 @@
-# Codeium Editor Svelte
+# Codeium Svelte Editor
 
 [![built with Codeium](https://codeium.com/badges/main)](https://codeium.com/badges/main)
 

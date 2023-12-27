@@ -1,5 +1,5 @@
 {
-  "workbench.colorTheme": "Night Owl Black",
+  "workbench.colorTheme": "Svelte Dark",
   "workbench.iconTheme": "vscode-icons",
   "workbench.editor.enablePreview": false,
   "workbench.editor.tabSizing": "shrink",
@@ -77,11 +77,7 @@
     "*.css": "tailwindcss"
   },
 
-  "eslint.validate": [
-    "javascript",
-    "typescript",
-    "svelte"
-  ],
+  "eslint.validate": ["javascript", "typescript", "svelte"],
   "eslint.workingDirectories": [{ "mode": "auto" }],
   "eslint.run": "onType",
   "editor.codeActionsOnSave": {
@@ -115,5 +111,24 @@
   },
   "svelte.enable-ts-plugin": true,
 
-  "peacock.remoteColor": "#0c274c"
+  "peacock.remoteColor": "#801f00",
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#b32b00",
+    "activityBar.background": "#b32b00",
+    "activityBar.foreground": "#e7e7e7",
+    "activityBar.inactiveForeground": "#e7e7e799",
+    "activityBarBadge.background": "#00bf2e",
+    "activityBarBadge.foreground": "#e7e7e7",
+    "commandCenter.border": "#e7e7e799",
+    "sash.hoverBorder": "#b32b00",
+    "statusBar.background": "#801f00",
+    "statusBar.foreground": "#e7e7e7",
+    "statusBarItem.hoverBackground": "#b32b00",
+    "statusBarItem.remoteBackground": "#801f00",
+    "statusBarItem.remoteForeground": "#e7e7e7",
+    "titleBar.activeBackground": "#801f00",
+    "titleBar.activeForeground": "#e7e7e7",
+    "titleBar.inactiveBackground": "#801f0099",
+    "titleBar.inactiveForeground": "#e7e7e799"
+  }
 }
