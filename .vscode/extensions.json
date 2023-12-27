@@ -1,0 +1,49 @@
+{
+  "recommendations": [
+    "azuretools.vscode-docker",
+
+    "xabikos.JavaScriptSnippets",
+
+    "oven.bun-vscode",
+
+    "formulahendry.auto-close-tag",
+    "formulahendry.auto-rename-tag",
+
+    "formulahendry.code-runner",
+    "streetsidesoftware.code-spell-checker",
+
+    "Codeium.codeium",
+    "dbaeumer.vscode-eslint",
+    "seyyedkhandon.firacode",
+    "codezombiech.gitignore",
+    "ecmel.vscode-html-css",
+    "wix.vscode-import-cost",
+
+    "visualstudioexptteam.vscodeintellicode",
+    "visualstudioexptteam.intellicode-api-usage-examples",
+    "visualstudioexptteam.vscodeintellicode-completions",
+
+    "yzhang.markdown-all-in-one",
+    "davidanson.vscode-markdownlint",
+    "thedavej.night-owl-black",
+
+    "leizongmin.node-module-intellisense",
+    "christian-kohler.npm-intellisense",
+    "christian-kohler.path-intellisense",
+
+    "esbenp.prettier-vscode",
+    "gruntfuggly.todo-tree",
+    "vscode-icons-team.vscode-icons",
+
+    "oderwat.indent-rainbow",
+    "shardulm94.trailing-spaces",
+
+    "johnpapa.vscode-peacock",
+    "bierner.emojisense",
+    "mdickin.markdown-shortcuts",
+
+    "svelte.svelte-vscode",
+    "ardenivanov.svelte-intellisense",
+    "fivethree.vscode-svelte-snippets"
+  ]
+}

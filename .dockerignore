@@ -1,0 +1,19 @@
+.git
+
+# dependencies
+/node_modules
+
+# production
+/build
+/.svelte-kit
+/package
+
+# misc
+.DS_Store
+
+# vercel
+.vercel
+.output
+
+# typescript
+*.tsbuildinfo

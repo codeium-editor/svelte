@@ -1,0 +1,119 @@
+{
+  "workbench.colorTheme": "Night Owl Black",
+  "workbench.iconTheme": "vscode-icons",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.tabSizing": "shrink",
+  "workbench.panel.defaultLocation": "bottom",
+  "workbench.settings.editor": "json",
+  "workbench.sideBar.location": "left",
+  "workbench.fontAliasing": "default",
+  "workbench.editor.showTabs": "multiple",
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.list.smoothScrolling": true,
+
+  "breadcrumbs.enabled": true,
+  "breadcrumbs.filePath": "on",
+  "breadcrumbs.symbolPath": "on",
+
+  "terminal.explorerKind": "external",
+  "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.fontFamily": "'Fira Code', monospace",
+  "terminal.integrated.cursorBlinking": true,
+  "terminal.integrated.cursorStyle": "line",
+
+  "explorer.autoReveal": true,
+  "explorer.sortOrder": "type",
+
+  "editor.wordWrap": "on",
+  "editor.autoIndent": "full",
+
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": "on",
+  "editor.cursorStyle": "line",
+
+  "editor.renderWhitespace": "boundary",
+  "editor.unicodeHighlight.invisibleCharacters": true,
+  "editor.snippetSuggestions": "top",
+  "editor.acceptSuggestionOnEnter": "smart",
+  "editor.fontSize": 12,
+  "editor.letterSpacing": 0,
+  "editor.lineHeight": 0,
+
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
+  "editor.formatOnSave": true,
+  "editor.showFoldingControls": "always",
+  "editor.formatOnSaveMode": "modificationsIfAvailable",
+  "editor.renderLineHighlight": "all",
+  "editor.cursorSurroundingLines": 90,
+  "editor.lineNumbers": "on",
+
+  "editor.minimap.enabled": true,
+
+  "editor.multiCursorModifier": "alt",
+
+  "editor.suggestSelection": "recentlyUsedByPrefix",
+  "editor.tabCompletion": "on",
+  "editor.tabSize": 2,
+
+  "editor.quickSuggestions": {
+    "strings": true
+  },
+
+  "editor.linkedEditing": true,
+  "editor.guides.bracketPairs": true,
+  "editor.fontFamily": "Fira Code",
+  "editor.fontLigatures": true,
+
+  "files.autoSave": "afterDelay",
+  "files.autoSaveDelay": 1000,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+
+  "search.showLineNumbers": true,
+
+  "files.associations": {
+    "*.css": "tailwindcss"
+  },
+
+  "eslint.validate": [
+    "javascript",
+    "typescript",
+    "svelte"
+  ],
+  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.run": "onType",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  },
+
+  "todo-tree.general.statusBar": "total",
+
+  "codeium.enableConfig": {
+    "*": true,
+    "markdown": true
+  },
+
+  "css.lint.important": "warning",
+  "scss.lint.important": "warning",
+
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "svelte.enable-ts-plugin": true,
+
+  "peacock.remoteColor": "#0c274c"
+}
