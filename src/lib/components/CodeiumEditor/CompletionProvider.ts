@@ -1,5 +1,5 @@
 import { Code, ConnectError, type PromiseClient } from '@connectrpc/connect'
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
 import {
   Document as DocumentInfo,

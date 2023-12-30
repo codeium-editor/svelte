@@ -1,5 +1,5 @@
-import * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
-import { type PromiseClient } from '@connectrpc/connect'
+import type * as monaco from 'monaco-editor/esm/vs/editor/editor.api'
+import type { PromiseClient } from '@connectrpc/connect'
 
 import { LanguageServerService } from '$lib/api/proto/exa/language_server_pb/language_server_connect'
 

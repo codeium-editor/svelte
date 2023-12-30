@@ -1,38 +1,66 @@
 <script lang="ts">
-  import { onDestroy, onMount } from 'svelte'
+  import { BROWSER } from 'esm-env'
+
+  if (!BROWSER) {
+    throw new Error(
+      'CodeiumEditor must be used in a browser environment only! Disable ssr or use dynamic imports to import the component instead.'
+    )
+  }
+
+  import { onMount, onDestroy } from 'svelte'
+  import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api'
+
   import { createConnectTransport } from '@connectrpc/connect-web'
   import { createPromiseClient } from '@connectrpc/connect'
-  import type * as Monaco from 'monaco-editor/esm/vs/editor/editor.api'
 
   import { LanguageServerService } from '$lib/api/proto/exa/language_server_pb/language_server_connect'
 
+  import type { CodeiumEditorOptions } from '$lib/types'
+
   import { Status } from './Status'
-  import { getDefaultValue } from './defaultValues'
+  import { defaultEditorOptions } from './defaults'
   import InlineCompletionProvider from './InlineCompletionProvider'
 
   // import { CodeiumLogo } from '$lib/components/CodeiumLogo';
 
-  export let language: string = 'python'
-  export let width: string | number
-  export let height: string | number
-  export let onEditorMount: (
-    editor: Monaco.editor.IStandaloneCodeEditor,
-    monaco: typeof Monaco
-  ) => void = () => {}
+  export let language: CodeiumEditorOptions['language'] =
+    defaultEditorOptions.language
 
-  let editor: Monaco.editor.IStandaloneCodeEditor
-  let monaco: typeof Monaco
-  let editorContainer: HTMLElement
+  export let className: CodeiumEditorOptions['className'] =
+    defaultEditorOptions.className
 
-  let completionCount = 0
+  export let defaultContent: CodeiumEditorOptions['defaultContent'] =
+    defaultEditorOptions.defaultContent
+
+  export let monacoEditorOptions: CodeiumEditorOptions['monacoEditorOptions'] =
+    defaultEditorOptions.monacoEditorOptions
+
+  export let onEditorMount: CodeiumEditorOptions['onEditorMount'] =
+    defaultEditorOptions.onEditorMount
+
+  export let onEditorUpdate: CodeiumEditorOptions['onEditorUpdate'] =
+    defaultEditorOptions.onEditorUpdate
+
+  // export let storageKey: CodeiumEditorOptions['storageKey'] =
+  //   defaultEditorOptions.storageKey
+
+  // export let disableLocalStorage: CodeiumEditorOptions['disableLocalStorage'] =
+  //   defaultEditorOptions.disableLocalStorage
+
+  let completionCount: number = 0
   let codeiumStatus: Status = Status.INACTIVE
-  let codeiumStatusMessage = ''
+  let codeiumStatusMessage: string = ''
+
+  let monaco: typeof Monaco
+  let editor: Monaco.editor.IStandaloneCodeEditor
+  let editorContainer: HTMLDivElement
+  // let editorId = $state(crypto.randomUUID())
 
   onMount(async () => {
     monaco = (await import('./Monaco')).default
 
     // monaco is ready!
-    const editor = monaco.editor.create(editorContainer)
+    editor = monaco.editor.create(editorContainer, monacoEditorOptions!)
 
     const transport = createConnectTransport({
       baseUrl: 'https://web-backend.codeium.com',
@@ -55,7 +83,7 @@
 
     monaco.editor.registerCommand(
       'codeium.acceptCompletion',
-      (_: unknown, completionId: string, insertText: string) => {
+      (_: unknown, completionId: string, insertText: string) => { // eslint-disable-line
         inlineCompletionsProvider.acceptedLastCompletion(completionId)
       }
     )
@@ -69,34 +97,41 @@
     }
 
     // Pass the editor instance to the user defined onEditorMount prop
-    if (onEditorMount) {
-      onEditorMount(editor, monaco)
+    if (typeof onEditorMount !== 'undefined') {
+      onEditorMount!(editor, monaco)
     }
 
-    let defaultLanguageProps: Monaco.EditorProps = {
-      defaultLanguage: language,
-      defaultValue: getDefaultValue(language)
+    // let defaultLanguageProps: Monaco.EditorProps = {
+    //   defaultLanguage: language,
+    //   defaultValue: getDefaultValue(language)
+    // }
+
+    if (typeof onEditorUpdate !== 'undefined') {
+      editor.getModel()?.onDidChangeContent((e) => {
+        onEditorUpdate!(e, editor, monaco)
+      })
     }
 
-    const model = monaco.editor.createModel(
-      "console.log('Hello from Monaco! (the editor, not the city...)')",
-      'javascript'
-    )
+    const model = monaco.editor.createModel(defaultContent!, language!)
+
     editor.setModel(model)
   })
 
   onDestroy(() => {
-    monaco?.editor.getModels().forEach((model) => model.editor?.dispose())
+    monaco?.editor
+      .getModels()
+      .forEach((model) => model.isAttachedToEditor() && model.dispose())
+    editor?.dispose()
   })
 </script>
 
 <div>
-  <div class="container" bind:this={editorContainer} />
+  <div class={className} bind:this={editorContainer} />
 </div>
 
 <style>
-  .container {
-    width: 100%;
-    height: 600px;
+  .editor {
+    width: 600px;
+    height: 400px;
   }
 </style>
